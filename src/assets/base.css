@@ -1,0 +1,63 @@
+body{
+    height: 100%;
+    margin:0;
+    padding: 0;
+    font-size:0.12rem;
+    font-family: "Helvetica Neue", Helvetica, STHeiTi, Arial, sans-serif;
+}
+*,input,select,a,span{
+    outline: 0;
+    margin:0;
+    -webkit-tap-highlight-color: transparent;
+　　-moz-tap-highlight-color:transparent;
+    -webkit-appearance:none;
+    box-sizing: border-box;
+}
+h1, h2, h3, h4, h5, h6, p, figure, form, blockquote {
+    margin: 0;
+    padding:0;
+    font-weight: normal;
+}
+a{
+  text-decoration: none;
+  color:#333;
+}
+ul, ol, li, dl, dd {
+    margin: 0;
+    padding: 0;
+    list-style:none;
+}
+em,i{
+  font-style: normal;
+}
+div {
+    box-sizing: border-box;
+}
+img {
+    border: 0;
+    vertical-align: middle;
+    max-width: 100%;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+td,th {
+    padding: 0;
+}
+#app{
+  width: 100%;
+  margin:0;
+}
+/*1px 边框*/
+.border-scale{
+    position: absolute;
+    top:0;
+    left:0;
+    content: '';
+    display: block;
+    height: 1px;
+    width: 100%;
+    background: #ddd;
+    transform:scaleY(0.5)
+}
