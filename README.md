@@ -1,6 +1,6 @@
 # test project
 
-==vue-cli+vue-router+vue-axios+vuex==
+The application list : vue-cli+vue-router+vue-axios+vuex
 
 Used for wap station can change the web station
 
