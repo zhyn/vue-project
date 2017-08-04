@@ -20,7 +20,7 @@
 <script>
 import '../../assets/base.css';
 import Modal from "../../components/Modals.vue";
-import {mapState} from 'vuex';
+import {mapState, mapMutations, mapGetters, mapActions} from 'vuex';
 export default {
     components:{Modal},
     data(){
@@ -29,17 +29,24 @@ export default {
             tipText: '',
         }
     },
+    computed:{
+        ...mapState({
+            datas: 'orderData',
+            petIdData: 'petIdData',
+        }),
+        ...mapGetters(['getPetId']),
+        ...mapActions(['getData']),
+    },
     mounted(){
         let obj={
             name: 'Tom',
             age: 234,
         }
-        this.$store.commit('editOrderData', obj)
+        this.$store.commit('editOrderData', obj);
+        this.$store.dispatch('getData', {param:'1'}).then(()=>{
+            console.log('then page back')
+        })
     },
-    computed:mapState({
-        datas: 'orderData',
-        petIdData: 'petIdData',
-    }),
     watch:{
         tipText(values){
             if(!values)return;
