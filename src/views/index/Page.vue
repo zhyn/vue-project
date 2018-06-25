@@ -25,4 +25,10 @@ export default {
 	text-align:center;
 	font-size:.3rem;
 }
+.line{
+	width:80%;
+	margin:0 auto;
+	background:#eee;
+	padding: .2rem;
+}
 </style>
