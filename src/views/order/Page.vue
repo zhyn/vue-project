@@ -2,11 +2,14 @@
     <div class="wrap">
         <div class="select-main">
             <router-link to="/petname" class="btn">选择宠物</router-link>
-            <p class="text">已选择宠物信息：{{petIdData}}</p>
+            <p class="text" v-if="petIdData.id">已选择宠物信息：{{petIdData.name}}</p>
         </div>
         <div class="name">
-            mounted初始化数据：{{datas}}
+            <ul>
+                <li>{{datas}}</li>
+            </ul>
         </div>
+        <p v-for="(item, index) in aFlow" :key="index">{{item}}</p>
         <button type="button" name="button" class="edit-btn" @click="edit">点击测试弹出</button>
         <Modal :isShow="showTip" @cancleModal="cancleModal">
             <div class="modal-body">
@@ -33,9 +36,11 @@ export default {
         ...mapState({
             datas: 'orderData',
             petIdData: 'petIdData',
+            aFlow: 'aFlow',
         }),
         ...mapGetters(['getPetId']),
-        ...mapActions(['getData']),
+        ...mapActions(['getData', 'getPetData']),
+        ...mapMutations(['editOrderData','setValue']),
     },
     mounted(){
         let obj={
@@ -44,15 +49,21 @@ export default {
         }
         this.$store.commit('editOrderData', obj);
         this.$store.dispatch('getData', {param:'1'}).then(()=>{
-            console.log('then page back')
+            console.log(3);
+            this.$store.commit('setValue', {name: 'aFlow', val: '返回页面'})
+        });
+        this.$store.dispatch('getPetData').then(()=>{
+            console.log('success');
         })
     },
     watch:{
-        tipText(values){
-            if(!values)return;
-            setTimeout(()=>{
-                this.showTip = false;
-            }, 2000)
+        showTip(val){
+            if(val){
+                setTimeout(()=>{
+                    this.showTip = false;
+                    this.tipText = '';
+                }, 2000)
+            }
         }
     },
     methods:{
