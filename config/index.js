@@ -28,11 +28,11 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-        '/api': {
-            target: 'http://100.00.00.00',
+        '/bridge': {
+            target: 'http://localhost:3000',
             changeOrigin: true,
             pathRewrite: {
-              '^/api': '/'
+              '^/bridge': '/'
             }
         }
     },
